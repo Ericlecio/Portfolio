@@ -375,6 +375,94 @@ a {
 }
 
 /* =========================================
+   PUBLICAÇÕES
+   ========================================= */
+.publications-section {
+  padding: 2rem 0 5rem;
+}
+
+.publications-section h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.publications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.pub-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.pub-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: var(--accent);
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.pub-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.pub-card:hover::before {
+  opacity: 1;
+}
+
+.pub-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pub-event {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.pub-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+
+.pub-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.pub-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* =========================================
    JOURNEY (TIMELINE)
    ========================================= */
 .journey-section {
@@ -431,10 +519,6 @@ a {
   margin-bottom: 0.5rem;
   color: var(--accent);
 }
-
-/* =========================================
-   NOVOS ESTILOS - CARREIRA (CORREÇÕES)
-   ========================================= */
 
 /* Submenus de Monitorias e Detalhes */
 .timeline-sublist {
@@ -575,7 +659,9 @@ a {
   transform: translateY(20px);
 }
 
-/* Responsividade */
+/* =========================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================= */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -608,5 +694,11 @@ a {
     flex-direction: column;
     gap: 2rem;
     text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .publications-grid {
+    grid-template-columns: 1fr;
   }
 }
