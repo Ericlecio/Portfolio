@@ -65,14 +65,29 @@ a {
   border-bottom: 1px solid var(--border);
 }
 
-.logo {
-  font-size: 1.5rem;
+.brand-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+}
+
+.brand-first {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: 1px;
+}
+
+.brand-second {
+  font-size: 1.2rem;
   font-weight: 800;
   color: var(--primary);
+  margin-left: 3.5rem;
 }
 
 .desktop-nav {
   display: flex;
+  align-items: center;
   gap: 2rem;
 }
 
@@ -91,6 +106,7 @@ a {
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
   color: var(--primary);
+  white-space: nowrap;
 }
 
 .btn-contact:hover {
@@ -105,7 +121,6 @@ a {
   cursor: pointer;
 }
 
-/* Mobile Menu Overlay */
 .mobile-menu-overlay {
   position: fixed;
   top: 0;
@@ -142,19 +157,19 @@ a {
 }
 
 /* =========================================
-   HERO SECTION
+   HERO SECTION (ATUALIZADA)
    ========================================= */
 .hero {
-  min-height: 100vh;
+  min-height: 70vh; /* Reduzido de 100vh para diminuir a altura do bloco */
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 5rem;
+  justify-content: center; /* Centraliza para aproximar os elementos */
+  gap: 5rem; /* Define a distância entre o texto e a foto */
+  padding-top: 8rem;
 }
 
 .hero-text {
-  flex: 1;
-  max-width: 600px;
+  max-width: 500px; /* Reduzido levemente e removido o flex: 1 */
 }
 
 .badge {
@@ -187,6 +202,7 @@ a {
 .hero-buttons {
   display: flex;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .btn {
@@ -214,9 +230,8 @@ a {
 }
 
 .hero-img {
-  flex: 1;
   display: flex;
-  justify-content: flex-end;
+  /* Removido o flex: 1 e justify-content: flex-end para evitar o afastamento */
 }
 
 .hero-img img {
@@ -229,32 +244,55 @@ a {
 }
 
 /* =========================================
-   SKILLS SECTION
+   SKILLS SECTION (DUAS COLUNAS GRID)
    ========================================= */
 .skills-section {
   padding: 5rem 0;
-  text-align: center;
 }
 
 .skills-section h2 {
+  text-align: center;
   margin-bottom: 3rem;
   font-size: 2rem;
+}
+
+/* Layout em Grid para dividir em 2 colunas */
+.skills-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.skill-group {
+  text-align: center;
+}
+
+.skill-group-title {
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.2rem;
 }
 
 .skill-card {
   background: var(--card-bg);
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 12px;
   border: 1px solid var(--border);
-  width: 120px;
+  width: 90px;
   transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .skill-card:hover {
@@ -263,8 +301,13 @@ a {
 }
 
 .skill-card i {
-  font-size: 3rem;
+  font-size: 2.2rem;
   margin-bottom: 0.5rem;
+}
+
+.skill-card p {
+  font-size: 0.85rem;
+  margin: 0;
 }
 
 /* =========================================
@@ -477,12 +520,11 @@ a {
 .timeline-container {
   display: flex;
   overflow-x: auto;
-  gap: 2rem;
+  gap: 1.5rem;
   padding-bottom: 2rem;
   scroll-snap-type: x mandatory;
 }
 
-/* Scrollbar Customizada */
 .timeline-container::-webkit-scrollbar {
   height: 8px;
 }
@@ -495,32 +537,35 @@ a {
 }
 
 .timeline-item {
-  min-width: 300px;
+  min-width: 280px;
   background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 15px;
+  padding: 1.5rem;
+  border-radius: 12px;
   border-top: 3px solid var(--primary);
   scroll-snap-align: center;
   position: relative;
 }
 
-/* Ano Padrão (Marca d'água de fundo) */
 .timeline-item .year {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.05);
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 20px;
 }
 
 .timeline-item h3 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  font-size: 1.1rem;
   color: var(--accent);
 }
 
-/* Submenus de Monitorias e Detalhes */
+.timeline-item p {
+  font-size: 0.95rem;
+}
+
 .timeline-sublist {
   margin-top: 1rem;
   padding-left: 1rem;
@@ -529,9 +574,9 @@ a {
 }
 
 .timeline-sublist li {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   position: relative;
   padding-left: 10px;
   text-align: left;
@@ -546,11 +591,13 @@ a {
   line-height: 1;
 }
 
-/* Destaque Especial (Graduação) */
 .highlight-item {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
 }
 
 .highlight-item .timeline-content {
@@ -560,27 +607,24 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 1.5rem;
+  border-radius: 12px;
 }
 
 .highlight-item h3 {
   color: var(--accent);
   text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-  margin-top: 0 !important; /* Remove margem para não colar na etiqueta */
+  margin-top: 0;
 }
 
-/* CORREÇÃO DO BUG DA DATA GIGANTE: */
-/* Transforma a marca d'água em uma etiqueta elegante */
 .highlight-item .year {
-  position: relative !important;
-  top: auto !important;
-  right: auto !important;
-
-  font-size: 0.9rem !important;
-  opacity: 1 !important;
-
-  color: #061826 !important;
+  position: relative;
+  top: auto;
+  right: auto;
+  font-size: 0.85rem;
+  opacity: 1;
+  color: #061826;
   background-color: var(--accent);
-
   display: inline-block;
   width: fit-content;
   padding: 4px 12px;
@@ -595,44 +639,37 @@ a {
 }
 
 /* =========================================
-   FOOTER & UTILS
+   FOOTER (ENXUTA E MINIMALISTA)
    ========================================= */
 .footer {
   background: #05080f;
   padding: 4rem 0 2rem;
-  margin-top: 4rem;
+  margin-top: 5rem;
   border-top: 1px solid var(--border);
+  text-align: center;
 }
 
-.footer-content {
+.centered-socials {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
 }
 
-.social-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.social-links i,
-.social-links svg {
-  font-size: 2rem;
+.centered-socials i,
+.centered-socials svg {
+  font-size: 2.2rem;
   transition: 0.3s;
 }
 
-.social-links a:hover {
+.centered-socials a:hover {
   color: var(--primary);
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 .copy {
-  text-align: center;
   color: var(--text-muted);
   font-size: 0.9rem;
-  border-top: 1px solid var(--border);
-  padding-top: 2rem;
 }
 
 .btn-top {
@@ -646,7 +683,6 @@ a {
   border-radius: 50%;
   cursor: pointer;
   z-index: 99;
-  opacity: 1;
   transition: 0.3s;
   display: flex;
   justify-content: center;
@@ -660,7 +696,7 @@ a {
 }
 
 /* =========================================
-   RESPONSIVIDADE (MEDIA QUERIES)
+   RESPONSIVIDADE
    ========================================= */
 @media (max-width: 768px) {
   .menu-toggle {
@@ -669,31 +705,29 @@ a {
   .desktop-nav {
     display: none;
   }
-
+  .brand-second {
+    margin-left: 2rem;
+  }
   .hero {
     flex-direction: column-reverse;
     text-align: center;
     gap: 3rem;
     padding-top: 7rem;
   }
-
   .hero-text h1 {
     font-size: 2.5rem;
   }
-
   .hero-buttons {
     justify-content: center;
   }
-
   .hero-img img {
     width: 250px;
     height: 250px;
   }
 
-  .footer-content {
-    flex-direction: column;
-    gap: 2rem;
-    text-align: center;
+  /* Ajuste no layout das skills para o mobile (1 coluna) */
+  .skills-container {
+    grid-template-columns: 1fr;
   }
 }
 
