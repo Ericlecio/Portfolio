@@ -48,7 +48,7 @@ const projects = [
     technologies: ["Java 24", "Spring Boot", "Kafka", "CQRS", "React"],
     link: "https://github.com/Ericlecio/Elite-Bank-Api-Backend",
     deployLink: "",
-    image: "./assets/images/projects/EliteBank.png",
+    image: "./assets/images/projects/eliteBank.png",
   },
   {
     name: "OmniStream Engine",
