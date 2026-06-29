@@ -2,7 +2,6 @@
 // DADOS DO PORTFÓLIO
 // ==========================================
 
-// Tecnologias organizadas na ordem para o grid de 2 colunas
 const techGroups = [
   {
     category: "Linguagens",
@@ -43,11 +42,30 @@ const techGroups = [
 
 const projects = [
   {
+    name: "Elite Bank - Core API & Web",
+    description:
+      "Plataforma bancária de missão crítica. Implementa arquitetura CQRS, Event Sourcing e mensageria assíncrona com Apache Kafka, além de frontend React.",
+    technologies: ["Java 24", "Spring Boot", "Kafka", "CQRS", "React"],
+    link: "https://github.com/Ericlecio/Elite-Bank-Api-Backend",
+    deployLink: "",
+    image: "./assets/images/projects/EliteBank.png",
+  },
+  {
+    name: "OmniStream Engine",
+    description:
+      "Motor serverless orientado a eventos para ingestão e processamento de dados em tempo real. Focado em alta escalabilidade para telemetria e IoT utilizando arquitetura Cloud-Native.",
+    technologies: ["Python", "FastAPI", "AWS (SQS/Lambda)", "Terraform"],
+    link: "https://github.com/Ericlecio/OmniStream",
+    deployLink: "",
+    image: "./assets/images/projects/Oministream.png",
+  },
+  {
     name: "StudyFlow",
     description:
       "Plataforma de educação adaptativa com IA Generativa (Gemini). Cria trilhas de estudo infinitas e personalizadas. Arquitetura Fullstack Serverless.",
     technologies: ["Vue.js", "Node.js", "AI Gemini", "Firebase"],
     link: "https://github.com/Ericlecio/StudyFlow",
+    deployLink: "",
     image: "./assets/images/projects/StudyFlow.png",
   },
   {
@@ -56,6 +74,7 @@ const projects = [
       "Sistema inteligente de priorização utilizando algoritmo de Otimização por Enxame de Partículas (PSO). Solução completa com API FastAPI e Dashboard.",
     technologies: ["Python", "AI / PSO", "FastAPI", "Streamlit"],
     link: "https://github.com/Ericlecio/Sistema-priorizacao-recomendacao-pso",
+    deployLink: "",
     image: "./assets/images/projects/Sistema Inteligente de Priorização.png",
   },
   {
@@ -64,6 +83,7 @@ const projects = [
       "Sistema de agendamento médico com sincronização em tempo real. Foco em reatividade e gestão de clínicas via Firebase.",
     technologies: ["Vue.js", "Firebase", "NoSQL"],
     link: "https://github.com/Ericlecio/Nexus-Saude-Firebase",
+    deployLink: "",
     image: "./assets/images/projects/NexusSaude.png",
   },
   {
@@ -72,6 +92,7 @@ const projects = [
       "Detecção automatizada de ausência de vegetação em barragens para análise de risco estrutural utilizando modelo YOLO (Deep Learning).",
     technologies: ["Python", "YOLO", "Computer Vision", "Flask"],
     link: "https://github.com/Ericlecio/CIMAS_Constructions_Patologies_1",
+    deployLink: "",
     image: "./assets/images/projects/CIMAS_Constructions_Patologies_1.png",
   },
   {
@@ -80,6 +101,7 @@ const projects = [
       "Aplicação web robusta para gestão de Pet Shops. Controle de serviços e consultas com backend estruturado em Java.",
     technologies: ["Java", "MySQL", "Backend"],
     link: "https://github.com/Ericlecio/Mundo_Pet",
+    deployLink: "",
     image: "./assets/images/projects/Mundo Pet.png",
   },
 ];
@@ -209,12 +231,55 @@ const timeline = [
 
 document.addEventListener("DOMContentLoaded", () => {
   AOS.init({ duration: 800, once: true });
+  initTheme();
   renderTechs();
   renderProjects();
   renderPublications();
   renderTimeline();
   handleScroll();
 });
+
+function initTheme() {
+  const themeToggleBtn = document.getElementById("theme-toggle");
+  if (!themeToggleBtn) return;
+
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "light") {
+    document.body.classList.add("light-theme");
+    updateThemeIcon("light");
+  } else {
+    updateThemeIcon("dark");
+  }
+
+  themeToggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light-theme");
+    const currentTheme = document.body.classList.contains("light-theme")
+      ? "light"
+      : "dark";
+    localStorage.setItem("theme", currentTheme);
+    updateThemeIcon(currentTheme);
+  });
+}
+
+function updateThemeIcon(theme) {
+  const themeToggleBtn = document.getElementById("theme-toggle");
+  if (!themeToggleBtn) return;
+
+  if (theme === "light") {
+    themeToggleBtn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor">
+        <path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-56 96 100-52 53Zm492 496-97-101 53-52 100 96-56 57Zm-96-496 97-100 56 56-100 97-53-53ZM155-207l97-101 53 53-100 96-50-48Zm325-273Z"/>
+      </svg>
+    `;
+  } else {
+    themeToggleBtn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor">
+        <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T440-660q0 90 63 153t153 63q52 0 98.5-24.5T831-734q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/>
+      </svg>
+    `;
+  }
+}
 
 function renderTechs() {
   const container = document.getElementById("skills-container");
@@ -258,6 +323,7 @@ function renderTechs() {
 function renderProjects() {
   const container = document.getElementById("project-list");
   if (!container) return;
+  container.innerHTML = "";
 
   projects.forEach((project) => {
     const div = document.createElement("div");
@@ -273,6 +339,14 @@ function renderProjects() {
       >
     `;
 
+    const isDeployActive = project.deployLink !== "";
+    const deployHref = isDeployActive ? project.deployLink : "#";
+    const deployTarget = isDeployActive ? "_blank" : "_self";
+    const deployClass = isDeployActive
+      ? "project-link btn-deploy"
+      : "project-link btn-deploy disabled";
+    const deployText = isDeployActive ? "Visualizar Projeto" : "Em breve";
+
     div.innerHTML = `
       ${imgHTML}
       <div class="project-content">
@@ -281,9 +355,15 @@ function renderProjects() {
           ${project.technologies.map((t) => `<span class="tech-tag">${t}</span>`).join("")}
         </div>
         <p>${project.description}</p>
-        <a href="${project.link}" target="_blank" class="project-link">
-          Ver no GitHub <i class="devicon-github-original"></i>
-        </a>
+        
+        <div class="project-links-wrapper">
+          <a href="${project.link}" target="_blank" class="project-link btn-code">
+            Ver Código
+          </a>
+          <a href="${deployHref}" target="${deployTarget}" class="${deployClass}">
+            ${deployText}
+          </a>
+        </div>
       </div>
     `;
     container.appendChild(div);
